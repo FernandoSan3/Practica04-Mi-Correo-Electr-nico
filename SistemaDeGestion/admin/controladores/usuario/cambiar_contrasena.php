@@ -7,7 +7,8 @@
 <body>
     <?php
      include '../../../config/conexionBD.php';
-     $codigo = $_POST["codigo"];
+     $cadena = isset($_POST["codigo"]) ? mb_strtoupper(trim($_POST["codigo"]), 'UTF-8') : null;
+     list($codigo, $motivo) = explode('/', $cadena);
      $contrasena1 = isset($_POST["contrasena1"]) ? trim($_POST["contrasena1"]) : null;
      $contrasena2 = isset($_POST["contrasena2"]) ? trim($_POST["contrasena2"]) : null;
      $sqlContrasena1 = "SELECT * FROM usuario where usu_codigo=$codigo and usu_password=MD5('$contrasena1')";
@@ -24,7 +25,7 @@
 
          if ($conn->query($sqlContrasena2) === TRUE) {
              # code...
-             echo "Se ha actilizadp la contraseña correctamente!!!<br>";
+             echo "Se ha actilizado la contraseña correctamente!!!<br>";
          } else {
              echo "<p> Error: " . mysqli_error($conn) . "</p>";
          }
@@ -32,7 +33,14 @@
             echo "<p> La contraseña actual no coindice con nuestros registros!!! </p>";
 
         }
-        echo "<a href='../../vista/usuario/index.php'>Regresa</a>";
+        if ($motivo == 'USER') {
+            # code...
+            echo "<a href='../../vista/usuario/indexU.php'>Regresa</a>";
+        }else {
+            # code...
+            echo "<a href='../../vista/usuario/index.php'>Regresa</a>";
+        }
+        
         $conn->close();
 
 

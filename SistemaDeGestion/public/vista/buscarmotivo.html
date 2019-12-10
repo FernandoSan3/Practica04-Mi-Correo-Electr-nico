@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscar Agenda</title>
+    <script type="text/javascript" src="ajax.js"></script>
+    <link rel="stylesheet" href ="style.css">
+</head>
+<body>
+    <div id="informacion"><b>Ingrese el motivo de la reunion</b></div>
+    <br>
+        <form onsubmit="return buscarPorMotiv()">
+                <input type="text" id="motivo" name="motivo" value="">
+                <input type="button" id="buscar" name="buscar" value="Buscar" onclick="buscarPorMotiv()">
+        </form>
+    <br>
+    <br>
+    <br>
+    <div id="informacion2"><b></b></div>
+</body>
+</html>

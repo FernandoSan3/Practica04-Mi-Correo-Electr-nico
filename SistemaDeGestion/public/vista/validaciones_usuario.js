@@ -61,7 +61,6 @@ function validarLetras(elemento) {
     }
 
 }
-
 function validarRol() {
     var num = formulario01.roles.value;
     if (num.length <= 3) {
@@ -77,7 +76,6 @@ function validarRol() {
         
     } 
 }
-
 
 function validarNumeros(num) {
     var aux = window.Event ? num.which : num.keyCode
@@ -267,21 +265,21 @@ function validarCorreo() {
 
 function validarFecha() {
     var fecha = formulario01.fechaNacimiento.value;
-    var arreglo = fecha.split('/');
-    var aux1 = arreglo[0];
+    var arreglo = fecha.split('-');
+    var aux1 = arreglo[2];
     var aux2 = arreglo[1];
-    var aux3 = arreglo[2];
+    var aux3 = arreglo[0];
     if (fecha.length == 10) {
-        if (aux1 < 1 || aux1 > 31) {
-            document.getElementById('mensajeFechaNacimiento').innerHTML = "Ingrese un día menor que 32 y mayor a que 00";
-            document.getElementById('fechaNacimiento').style.border = "1px solid red";
-            return false;
+        if  (aux3 < 1920 || aux3 > 2019) {
+                document.getElementById('mensajeFechaNacimiento').innerHTML = "Ingrese un año menor que 2019 y mayor a que 1920";
+                document.getElementById('fechaNacimiento').style.border = "1px solid red";
+                return false;
         } else if (aux2 < 1 || aux2 > 12) {
             document.getElementById('mensajeFechaNacimiento').innerHTML = "Ingrese un mes menor que 12 y mayor a que 00";
             document.getElementById('fechaNacimiento').style.border = "1px solid red";
             return false;
-        } else if (aux3 < 1920 || aux3 > 2019) {
-            document.getElementById('mensajeFechaNacimiento').innerHTML = "Ingrese un año menor que 2019 y mayor a que 1920";
+        } else if (aux1 < 1 || aux1 > 31) {
+            document.getElementById('mensajeFechaNacimiento').innerHTML = "Ingrese un día menor que 32 y mayor a que 00";
             document.getElementById('fechaNacimiento').style.border = "1px solid red";
             return false;
         } else {
@@ -291,7 +289,7 @@ function validarFecha() {
         }
     } else {
         document.getElementById('fechaNacimiento').style.border = "1px solid red";
-        document.getElementById('mensajeFechaNacimiento').innerHTML = 'Ingrese con formato día/mes/año correctos';
+        document.getElementById('mensajeFechaNacimiento').innerHTML = 'Ingrese con formato año-mes-día correctos';
         return false;
 
     }

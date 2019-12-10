@@ -1,9 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Buscar Reuniones</title>
+    <link rel="stylesheet" href ="../public/vista/style.css">
+</head>
+<body>
+    
+
 <?php
 include "conexionBD.php";
 
-$cedula = $_GET['motivo'];
-
-$sql = "SELECT * FROM reuniones WHERE usu_motivo='$cedula'";
+$motivo = $_GET['motivo'];
+$sql = "SELECT * FROM reuniones WHERE reu_motivo='$motivo'";
 $result = $conn->query($sql);
 
 echo "  <table style='width:100%'>
@@ -13,8 +24,7 @@ echo "  <table style='width:100%'>
             <th>lugar</th> 
             <th>coordenadas</th> 
             <th>Remitente</th> 
-            <th>Invitado</th>
-            <th>Motivo/th> 
+            <th>Motivo</th>
             <th>Observaciones</th> 
             <th></th>
             <th></th>
@@ -26,13 +36,13 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()){
 
         echo "<tr>";
-        echo " <td>" . $row['usu_cedula'] . "</td>";
-        echo " <td>" . $row['usu_nombres'] . "</td>";
-        echo " <td>" . $row['usu_apellidos'] . "</td>";
-        echo " <td>" . $row['usu_direccion'] . "</td>";
-        echo " <td>" . $row['usu_telefono'] . "</td>";
-        echo " <td>" . $row['usu_correo'] . "</td>";
-        echo " <td>" . $row['usu_fecha_nacimiento'] . "</td>";
+        echo "<td>" . $row["reu_fecha"] . "</td>"; 
+        echo "<td>" . $row['reu_hora'] . "</td>";
+        echo "<td>" . $row['reu_lugar'] . "</td>";
+        echo "<td>" . $row['reu_coordenadas'] . "</td>";
+        echo "<td>" . $row['reu_remitente'] . "</td>";
+        echo "<td>" . $row['reu_motivo'] . "</td>"; 
+        echo "<td>" . $row['reu_observaciones'] . "</td>"; 
         echo "</tr>";
     }
 }else {
@@ -43,3 +53,6 @@ if ($result->num_rows > 0) {
     echo "</table>";
     $conn->close();
 ?>
+
+</body>
+</html>

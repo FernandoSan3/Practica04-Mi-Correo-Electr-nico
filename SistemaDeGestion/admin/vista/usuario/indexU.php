@@ -16,7 +16,7 @@ header("Location: /SistemaDeGestion/public/vista/login.html"); }
 <body>
     <br>
     <?php
-    echo "<td> <a href = '../../../config/cerrar_sesion.php" ."'> Cerrar Sesion</a> </td>";
+    echo "<td> <a class ='f' href = '../../../config/cerrar_sesion.php" ."'> Cerrar Sesion</a> </td>";
     ?>
     <br>
     <br>
@@ -39,15 +39,18 @@ header("Location: /SistemaDeGestion/public/vista/login.html"); }
 
     <?php
     include '../../../config/conexionBD.php';
-    $usuario=$_SESSION['user'];
+    $usuario=$_SESSION['User'];
 
     $sql="SELECT * FROM usuario WHERE usu_correo = '$usuario' ";
     $result = $conn->query($sql);
+    $prin = "User";
 
     if ($result->num_rows > 0) {
 
         while($row = $result->fetch_assoc()) {
             echo "<tr>";
+            $codigos1 = $row["usu_codigo"] ;
+            $cam= $codigos1."/".$prin;
             echo "<td>" . $row["usu_cedula"] . "</td>"; 
             echo "<td>" . $row['usu_nombres'] ."</td>";
             echo "<td>" . $row['usu_apellidos'] . "</td>";
@@ -56,8 +59,8 @@ header("Location: /SistemaDeGestion/public/vista/login.html"); }
             echo "<td>" . $row['usu_correo'] . "</td>";
             echo "<td>" . $row['usu_fecha_nacimiento'] . "</td>"; 
             echo "<td>" . $row['usu_roles'] . "</td>"; 
-            echo "<td> <a href='modificar.php?codigo=" . $row['usu_codigo'] . "'>Modificar</a> </td>"; 
-            echo "<td> <a href='cambiar_contrasena.php?codigo=" . $row['usu_codigo'] . "'>Cambiar contraseña</a> </td>";
+            echo "<td> <a href='modificar.php?cam=" . $cam . "'>Modificar</a> </td>"; 
+            echo "<td> <a href='cambiar_contrasena.php?cam=" . $cam . "'>Cambiar contraseña</a> </td>";
             echo "</tr>";
 
         }
@@ -73,15 +76,9 @@ header("Location: /SistemaDeGestion/public/vista/login.html"); }
     <br>
     <br>
     <?php
-    echo "<td> <a href = '../../../public/vista/crear_reunion.html" ."'> Crear reuniones</a> </td>";
+    echo "<td> <a class ='f'  href = '../../../public/vista/crear_reunion.html" ."'> Crear reuniones</a> </td>";
     ?>
     <br>
-    <br>
-    <form onsubmit="return buscarPorMotivo()">
-    <input type="text" id="motivo" name="motivo" value="">
-    <input type="button" id="buscar" name="buscar" value="Buscar" onclick="buscarPorMotivo()"> 
-    <div id="informacion"><b>Reuniones agendadas</b></div>
-    </form>
     <br>
     <br>
 
@@ -92,8 +89,7 @@ header("Location: /SistemaDeGestion/public/vista/login.html"); }
          <th>lugar</th> 
          <th>coordenadas</th> 
          <th>Remitente</th> 
-         <th>Invitado</th>
-         <th>Motivo/th> 
+         <th>Motivo</th> 
          <th>Observaciones</th> 
     </tr>
    
@@ -101,11 +97,12 @@ header("Location: /SistemaDeGestion/public/vista/login.html"); }
 
     <?php
     include '../../../config/conexionBD.php';
-    $usuario1=$_SESSION['user'];
-
-    $sql1="SELECT * FROM reuniones WHERE reu_invitado = '$usuario1' ORDER BY reu_fecha ASC";
+    $usuario1=$_SESSION['User'];
+   
+   // REUNIONES DE SOLO SU REMITENTE
+   // $sql1="SELECT * FROM reuniones WHERE reu_remitente = '$codigos1' ORDER BY reu_fecha ASC";
+    $sql1="SELECT * FROM reuniones  ORDER BY reu_fecha ASC";
     $result1 = $conn->query($sql1);
-
 
     if ($result1->num_rows > 0) {
 
@@ -116,7 +113,6 @@ header("Location: /SistemaDeGestion/public/vista/login.html"); }
             echo "<td>" . $row['reu_lugar'] . "</td>";
             echo "<td>" . $row['reu_coordenadas'] . "</td>";
             echo "<td>" . $row['reu_remitente'] . "</td>";
-            echo "<td>" . $row['reu_invitado'] . "</td>";
             echo "<td>" . $row['reu_motivo'] . "</td>"; 
             echo "<td>" . $row['reu_observaciones'] . "</td>"; 
             echo "</tr>";
@@ -130,5 +126,24 @@ header("Location: /SistemaDeGestion/public/vista/login.html"); }
     $conn->close(); 
     ?>
     </table>
+
+    <br>
+    <br>
+    <br>
+    <?php
+    echo "<td> <a  class ='f'  href = '../../../public/vista/invitacion.php" ."'> Invitar</a> </td>";
+    ?>
+    <br>
+    <br>
+    <br>
+
+    <?php
+    echo "<td> <a class ='f'  href = '../../../public/vista/buscarmotivo.html" ."'> Buscar reuniones agendadas</a> </td>";
+    ?>
+    
+
+
+
+    
 </body> 
 </html>

@@ -3,7 +3,7 @@
 $db_servername="localhost";
 $db_username="root";
 $db_passwrod="";
-$db_name="hipermedial";
+$db_name="hipermedia";
 
 $conn= new mysqli($db_servername,$db_username,$db_passwrod,$db_name);
 $conn->set_charset("utf8");

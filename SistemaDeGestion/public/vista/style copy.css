@@ -1,26 +1,4 @@
-
-
-table {
-    border-collapse: separate;
-    border: rgb(41, 41, 51) 5px solid;
-  }
-th {
-    border-collapse: separate;
-    color: rgb(33, 111, 228);
-    background: rgba(255, 123, 0, 0.863);
-    border: rgb(41, 41, 51) 5px solid;
-  }
-
- td {
-    border-collapse: separate;
-    border: rgb(41, 41, 51) 5px solid;
-  }
-
-
-  
-
-
-  html {
+html {
     background: rgb(33, 113, 189);
 }
 .caja {
@@ -35,35 +13,21 @@ th {
 .cuadro {
     top: 10%;
     border: 2px;
-    left: 25%;
+    left: 5%;
     width: 40%;
-    height: 300px;
+    height: 3000px;
     text-align: center;
     color: gold;
-    border-radius: 50px;
+    border-radius: 80px;
     border: ridge;
     position: absolute;
     display: block;
     margin-top: 4px;
 }
-.cuadr {
-  top: 10%;
-  border: 2px;
-  left: 25%;
-  width: 40%;
-  height: 400px;
-  text-align: center;
-  color: gold;
-  border-radius: 50px;
-  border: ridge;
-  position: absolute;
-  display: block;
-  margin-top: 4px;
-}
 
 .botonstyle {
     width: 150px;
-    height: 30px;
+    height: 40px;
     top: 10%;
     margin: 1%;
     margin-left: 10%;
@@ -75,20 +39,7 @@ th {
     font-family: 'Courier New', Courier, monospace;
     color: gold;
 }
-.botonstyle1 {
-  width: 180px;
-  height: 30px;
-  top: 10%;
-  margin: 1%;
-  margin-left: 10%;
-  border-radius: 10px 10px 10px 10px;
-  margin-left: 30px;
-  background: #FF5733;
-  text-align: center;
-  font-size: 20px;
-  font-family: 'Courier New', Courier, monospace;
-  color: gold;
-}
+
 
 .error {
     color: red;
@@ -122,16 +73,4 @@ button {
       -ms-transform: rotate(-1.5deg);
        -o-transform: rotate(-1.5deg);
           transform: rotate(-1.5deg);
-  }
-
-  td a {
-    color: gold;
-  }
-  
-  .f{
-    color: white;
-  }
-
-  td {
-    color: greenyellow;
   }

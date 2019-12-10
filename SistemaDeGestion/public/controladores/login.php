@@ -32,15 +32,15 @@ header("Location: ../../admin/vista/usuario/indexU.php?proceso=" . $_POST[$_Proc
  if ($result->num_rows>0) { 
         $_SESSION['isLogged']=TRUE;
 
-        if( $attempts == 'admin' ){
-              $_SESSION['admin'] = $usuario;
-              $_SESSION['privilegios'] = 'admin';
+        if( $attempts == 'Admin' ){
+              $_SESSION['Admin'] = $usuario;
+              $_SESSION['privilegios'] = 'Admin';
               header("Location: ../../admin/vista/usuario/index.php");
 
         } else{
 
-              $_SESSION['user'] = $usuario;
-              $_SESSION['privilegios'] = 'user';
+              $_SESSION['User'] = $usuario;
+              $_SESSION['privilegios'] = 'User';
               header("Location: ../../admin/vista/usuario/indexU.php");
 
         }

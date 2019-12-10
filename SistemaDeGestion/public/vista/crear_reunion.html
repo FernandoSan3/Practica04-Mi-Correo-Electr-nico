@@ -7,6 +7,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <script type="text/javascript" src="validacion_usuario.js"></script>
+  <script type="text/javascript" src="ajax.js"></script>
+  <link href="../vista/style copy.css" rel="stylesheet" type="text/css" >
+
   <style type="text/css">
     .error {
       color: red;
@@ -20,40 +23,46 @@
 <body>
 
   <article class="about_tss">
-    <form action="../controladores/reunion.php" method="post" onsubmit="return validarCampos()">
+    <form action="../controladores/reunion.php" method="post" onsubmit="return validarCampos()" class="cuadro">
       <label for="fecha">Fecha (*) :</label>
       <input type="text" id="fecha" name="fecha" onkeyup="return validarLetras(this);" />
       <br>
+      <br>
       <label for="hora">Hora (*):</label>
       <input type="datetime" id="hora" name="hora" onkeyup="return validarLetras(this);" />
+      <br>
       <br>
 
       <label for="lugar">Lugar (*):</label>
       <input type="text" id="lugar" name="lugar" onkeyup="return validarLetras(this);" />
 
       <br>
+      <br>
 
       <label for="coordenadas">Coordenadas (*):</label>
       <input type="text" id="coordenadas" name="coordenadas" />
 
       <br>
+      <br>
       <label for="remitente">Remitente (*):</label>
-      <input type="text" id="remitente" name="remitente" />
+      <input type="text" id="cedula" name="cedula"  />
 
       <br>
-      <label for="invitado">Invitado (*):</label>
-      <input type="text" id="invitado" name="invitado" />
-
       <br>
       <label for="motivo">Motivo (*):</label>
-      <input type="text" id="motivo" name="motivo"   />
+      <input type="text" id="motivo" name="motivo" onkeyup="return validarLetras(this);"/>
+      <br>
       <br>
 
       <label for="observacion">Observacion (*):</label>
-      <input type="text" id="observacion" name="observacion"  />
+      <input type="text" id="observacion" name="observacion" onkeyup="return validarLetras(this);" />
       <br>
-      <input type="submit" id="crear" value="Aceptar" name="crear" />
-      <input type="reset" id="cancelar" name="cancelar" name="cancelar" value="Cancelar" />
+
+      <br>
+      <div id="informacion2"><b></b></div>
+      
+      <input class="botonstyle"  type="submit" id="crear" value="Aceptar" name="crear" />
+      <a href="../../admin/vista/usuario/indexU.php"><input class="botonstyle"  type="button" id="cancelar" name="cancelar" name="cancelar" value="Cancelar" /></a>
       <spam id="p" style="display: none;">Error, campos incompletos!</spam>
     </form>
   </article>

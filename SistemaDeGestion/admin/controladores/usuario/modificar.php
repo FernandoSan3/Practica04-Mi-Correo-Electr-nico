@@ -7,7 +7,10 @@
     <body>
         <?php
         include '../../../config/conexionBD.php';
-        $codigo = $_POST["codigo"];
+
+        $cadena = isset($_POST["codigo"]) ? mb_strtoupper(trim($_POST["codigo"]), 'UTF-8') : null;
+        list($codigo, $motivo) = explode('/', $cadena);
+
         $cedula = isset($_POST["cedula"]) ? trim($_POST["cedula"]) : null;
         $nombres = isset($_POST["nombres"]) ? mb_strtoupper(trim($_POST["nombres"]), 'UTF-8') : null;
         $apellidos = isset($_POST["apellidos"]) ? mb_strtoupper(trim($_POST["apellidos"]), 'UTF-8') : null;
@@ -37,7 +40,14 @@
             echo "Error: " . $sql . "<br>" . mysqli_error($conn) . "<br>";
 
         }
-        echo "<a href='../../vista/usuario/index.php'>Regresa</a>";
+        if ($motivo == 'USER') {
+            # code...
+            echo "<a href='../../vista/usuario/indexU.php'>Regresa</a>";
+        }else {
+            # code...
+            echo "<a href='../../vista/usuario/index.php'>Regresa</a>";
+        }
+        
         $conn->close();
 
 
